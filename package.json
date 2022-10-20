@@ -1,0 +1,15 @@
+{
+  "name": "pbp-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.6.0",
+    "firebase": "^9.12.1"
+  }
+}
