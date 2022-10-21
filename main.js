@@ -2,7 +2,7 @@ const { Client, Events, GatewayIntentBits, EmbedBuilder } = require('discord.js'
 const { token } = require('./config.json');
 const firebaseconf = require('./firebaseconfig.json')
 const { initializeApp } = require('firebase/app');
-const { getDatabase, ref, set, onValue } = require('firebase/database');
+const { getDatabase, ref, set } = require('firebase/database');
 
 const firebaseConfig = firebaseconf
   
