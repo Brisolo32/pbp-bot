@@ -1,10 +1,11 @@
-const { REST, Routes, SlashCommandBuilder } = require('discord.js');
+const { REST, Routes, SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const { clientId, guildId, token } = require('./config.json');
 
 const commands = [
     new SlashCommandBuilder()
         .setName('push')
         .setDescription('Pushes a update message')
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption(option =>
             option
             .setName("date")

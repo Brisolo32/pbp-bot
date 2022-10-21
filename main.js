@@ -5,7 +5,13 @@ const { initializeApp } = require('firebase/app');
 const { getDatabase, ref, set } = require('firebase/database');
 
 const firebaseConfig = firebaseconf
-  
+
+const adminId = [
+    382528255753977856,
+    953363314384187462,
+    323896995918118912
+]
+
 initializeApp(firebaseConfig);
 const db = getDatabase();  
 
@@ -22,9 +28,9 @@ client.on(Events.InteractionCreate, async interaction => {
 
 	const { commandName } = interaction;
 
-	if (commandName === 'push') {
-
-        if (interaction.user.id == "323896995918118912" || "382528255753977856" || "953363314384187462") {
+    if (commandName === 'push') {
+        console.log(interaction.author.id)
+        if (adminId.include(interaction.author.id)) {
             const date = interaction.options.getString('date')
             const message = interaction.options.getString('message')
             const media = interaction.options.getAttachment('media')
@@ -40,8 +46,6 @@ client.on(Events.InteractionCreate, async interaction => {
             console.log(interaction.user.id)
             writeData(date, message, user, media.url)
             interaction.reply({ embeds: [embed] })
-        } else {
-            interaction.reply({ content: `You can't run this command!`, ephemeral: true })
         }
     }
 });
