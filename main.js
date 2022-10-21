@@ -1,13 +1,10 @@
 const { Client, Events, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const { token } = require('./config.json');
+const firebaseconf = require('./firebaseconfig.json')
 const { initializeApp } = require('firebase/app');
 const { getDatabase, ref, set, onValue } = require('firebase/database');
 
-const firebaseConfig = {
-    // Never gonna give you up
-    // Never gonna let you down
-    // Never gonna run around and desert you
-};
+const firebaseConfig = firebaseconf
   
 initializeApp(firebaseConfig);
 const db = getDatabase();  
