@@ -4,13 +4,9 @@ const { initializeApp } = require('firebase/app');
 const { getDatabase, ref, set, onValue } = require('firebase/database');
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDpemaaPygvXbvEonlUC3QjMVz158h_OFI",
-    authDomain: "projectgames-304f4.firebaseapp.com",
-    databaseURL: "https://projectgames-304f4-default-rtdb.firebaseio.com",
-    projectId: "projectgames-304f4",
-    storageBucket: "projectgames-304f4.appspot.com",
-    messagingSenderId: "443851954620",
-    appId: "1:443851954620:web:8208c9b1e55242cc7773b9"
+    // Never gonna give you up
+    // Never gonna let you down
+    // Never gonna run around and desert you
 };
   
 initializeApp(firebaseConfig);
@@ -30,23 +26,26 @@ client.on(Events.InteractionCreate, async interaction => {
 	const { commandName } = interaction;
 
 	if (commandName === 'push') {
-        const date = interaction.options.getString('date')
-        const message = interaction.options.getString('message')
-        const media = interaction.options.getAttachment('media')
-        const user = interaction.user.tag
 
-        console.log(`${date}, ${message}, ${user}`)
-        console.log(media.url)
-
-        const embed = new EmbedBuilder()
-            .setColor("#ff8400")
-            .setTitle(`Dev Update - ${user}`)
-            .setDescription(message)
-            .setImage(media.url)
-            .setTimestamp()
-
-        writeData(date, message, user, media.url)
-        interaction.reply({ embeds: [embed] })
+        if (interaction.user.id == "323896995918118912" || "382528255753977856" || "953363314384187462") {
+            const date = interaction.options.getString('date')
+            const message = interaction.options.getString('message')
+            const media = interaction.options.getAttachment('media')
+            const user = interaction.user.tag
+    
+            const embed = new EmbedBuilder()
+                .setColor("#ff8400")
+                .setTitle(`Dev Update - ${user}`)
+                .setDescription(message)
+                .setImage(media.url)
+                .setTimestamp()
+    
+            console.log(interaction.user.id)
+            writeData(date, message, user, media.url)
+            interaction.reply({ embeds: [embed] })
+        } else {
+            interaction.reply({ content: `You can't run this command!`, ephemeral: true })
+        }
     }
 });
 
